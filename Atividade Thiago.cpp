@@ -230,4 +230,18 @@ int main() {
     imprimirPares(n);
     return 0;
 }
+//16
+#include <stdio.h>
 
+void imprimirImpares(int atual, int n) {
+    if (atual > n)
+        return;
+    printf("%d ", atual);
+    imprimirImpares(atual + 2, n);
+}
+
+int main() {
+    int n = 7;
+    imprimirImpares(1, n);
+    return 0;
+}
