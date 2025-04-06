@@ -200,3 +200,17 @@ int main() {
     printf("%d\n", eh_primo(9));  // Saída: 0 (false)
     return 0;
 }
+//14
+#include <stdio.h>
+
+int decimalParaBinario(int n) {
+    if (n == 0)
+        return 0;
+    return (n % 2) + 10 * decimalParaBinario(n / 2);
+}
+
+int main() {
+    int num = 10;
+    printf("%d\n", decimalParaBinario(num));
+    return 0;
+}
