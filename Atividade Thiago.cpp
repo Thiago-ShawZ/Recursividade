@@ -245,3 +245,21 @@ int main() {
     imprimirImpares(1, n);
     return 0;
 }
+//17
+#include <stdio.h>
+
+int buscarElemento(int arr[], int tamanho, int alvo) {
+    if (tamanho == 0)
+        return 0;
+    if (arr[0] == alvo)
+        return 1;
+    return buscarElemento(arr + 1, tamanho - 1, alvo);
+}
+
+int main() {
+    int arr[] = {2, 4, 6, 8};
+    int tamanho = sizeof(arr) / sizeof(arr[0]);
+    int alvo = 6;
+    printf("%d\n", buscarElemento(arr, tamanho, alvo));
+    return 0;
+}
