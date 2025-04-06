@@ -591,4 +591,88 @@ int main() {
     free(tab);
     return 0;
 }
+//29
+#include <stdio.h>
+
+#define N 3
+#define M 4
+
+int labirinto[N][M] = {
+    {0, 1, 0, 0},
+    {0, 0, 0, 1},
+    {1, 0, 1, 0}
+};
+
+int caminho[N][M];
+
+int mover(int x, int y) {
+    return x >= 0 && x < N && y >= 0 && y < M && labirinto[x][y] == 0 && caminho[x][y] == 0;
+}
+
+int resolverLabirinto(int x, int y) {
+    if (x == N - 1 && y == M - 1) {
+        caminho[x][y] = 1;
+        return 1;
+    }
+
+    if (mover(x, y)) {
+        caminho[x][y] = 1;
+
+        if (resolverLabirinto(x + 1, y)) return 1;
+        if (resolverLabirinto(x, y + 1)) return 1;
+        if (resolverLabirinto(x - 1, y)) return 1;
+        if (resolverLabirinto(x, y - 1)) return 1;
+
+        caminho[x][y] = 0;
+    }
+    return 0;
+}
+
+void imprimirCaminho() {
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < M; j++) {
+            if (caminho[i][j])
+                printf("* ");
+            else
+                printf("%d ", labirinto[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    if (resolverLabirinto(0, 0))
+        imprimirCaminho();
+    else
+        printf("Sem caminho.\n");
+    return 0;
+}
+//30
+#include <stdio.h>
+#include <string.h>
+
+void gerarParenteses(char *str, int pos, int abertos, int fechados, int n) {
+    if (fechados == n) {
+        str[pos] = '\0';
+        printf("%s\n", str);
+        return;
+    }
+
+    if (abertos < n) {
+        str[pos] = '(';
+        gerarParenteses(str, pos + 1, abertos + 1, fechados, n);
+    }
+
+    if (fechados < abertos) {
+        str[pos] = ')';
+        gerarParenteses(str, pos + 1, abertos, fechados + 1, n);
+    }
+}
+
+int main() {
+    int n = 3;
+    char str[2 * n + 1];
+    gerarParenteses(str, 0, 0, 0, n);
+    return 0;
+}
 
