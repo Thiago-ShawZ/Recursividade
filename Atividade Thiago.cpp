@@ -509,3 +509,22 @@ int main() {
 
     return 0;
 }
+//26
+#include <stdio.h>
+
+int exponenciacaoRapida(int x, int n) {
+    if (n == 0)
+        return 1;
+    if (n % 2 == 0) {
+        int meio = exponenciacaoRapida(x, n / 2);
+        return meio * meio;
+    } else {
+        return x * exponenciacaoRapida(x, n - 1);
+    }
+}
+
+int main() {
+    int x = 3, n = 4;
+    printf("%d\n", exponenciacaoRapida(x, n));
+    return 0;
+}
