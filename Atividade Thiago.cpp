@@ -129,3 +129,14 @@ int main() {
     
     return 0;
 }
+//9
+#include <stdio.h>
+
+int mdc(int a, int b) {
+    return b == 0 ? a : mdc(b, a % b);
+}
+
+int main() {
+    printf("%d\n", mdc(48, 18));
+    return 0;
+}
