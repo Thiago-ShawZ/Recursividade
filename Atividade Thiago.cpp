@@ -354,3 +354,39 @@ int main() {
     gerar_combinacoes(arr, n, k);
     return 0;
 }
+//22
+#include <stdio.h>
+
+void subconjuntos_rec(int arr[], int aux[], int n, int pos) {
+    if (pos == n) {
+        printf("{");
+        int primeiro = 1;
+        for (int i = 0; i < n; i++) {
+            if (aux[i]) {
+                if (!primeiro) printf(",");
+                printf("%d", arr[i]);
+                primeiro = 0;
+            }
+        }
+        printf("} ");
+        return;
+    }
+
+    aux[pos] = 0;
+    subconjuntos_rec(arr, aux, n, pos + 1);
+
+    aux[pos] = 1;
+    subconjuntos_rec(arr, aux, n, pos + 1);
+}
+
+void gerar_subconjuntos(int arr[], int n) {
+    int aux[n];
+    subconjuntos_rec(arr, aux, n, 0);
+}
+
+int main() {
+    int arr[] = {1, 2};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    gerar_subconjuntos(arr, n);
+    return 0;
+}
