@@ -152,3 +152,15 @@ int main() {
     printf("%d\n", multiplicar(4, 5));
     return 0;
 }
+//11
+#include <stdio.h>
+
+int contar_char(const char *str, char c) {
+    if (*str == '\0') return 0;
+    return (*str == c) + contar_char(str + 1, c);
+}
+
+int main() {
+    printf("%d\n", contar_char("abracadabra", 'a'));
+    return 0;
+}
