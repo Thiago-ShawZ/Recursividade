@@ -140,3 +140,15 @@ int main() {
     printf("%d\n", mdc(48, 18));
     return 0;
 }
+//10
+#include <stdio.h>
+
+int multiplicar(int a, int b) {
+    if (b == 0) return 0;
+    return a + multiplicar(a, b - 1);
+}
+
+int main() {
+    printf("%d\n", multiplicar(4, 5));
+    return 0;
+}
