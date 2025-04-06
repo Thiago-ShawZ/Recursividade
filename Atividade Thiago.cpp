@@ -177,3 +177,26 @@ int main() {
     printf("%d\n", soma_array(array, 4));
     return 0;
 }
+//13
+#include <stdio.h>
+#include <math.h>
+
+int eh_primo_rec(int n, int divisor, int limite) {
+    if (n <= 1) return 0;
+    if (divisor > limite) return 1;
+    if (n % divisor == 0) return 0;
+    return eh_primo_rec(n, divisor + 1, limite);
+}
+
+int eh_primo(int n) {
+    if (n <= 1) return 0;
+    if (n <= 3) return 1;
+    if (n % 2 == 0) return 0;
+    return eh_primo_rec(n, 3, sqrt(n));
+}
+
+int main() {
+    printf("%d\n", eh_primo(7));  // Saída: 1 (true)
+    printf("%d\n", eh_primo(9));  // Saída: 0 (false)
+    return 0;
+}
