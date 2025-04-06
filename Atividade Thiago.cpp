@@ -544,4 +544,51 @@ int main() {
     printf("%d\n", caminhos);
     return 0;
 }
+//28
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+int seguro(int tab[], int linha, int col) {
+    for (int i = 0; i < linha; i++) {
+        if (tab[i] == col || abs(tab[i] - col) == abs(i - linha))
+            return 0;
+    }
+    return 1;
+}
+
+void imprimirSolucao(int tab[], int n) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            if (tab[i] == j)
+                printf("Q ");
+            else
+                printf(". ");
+        }
+        printf("\n");
+    }
+    printf("\n");
+}
+
+void resolver(int tab[], int linha, int n) {
+    if (linha == n) {
+        imprimirSolucao(tab, n);
+        return;
+    }
+
+    for (int col = 0; col < n; col++) {
+        if (seguro(tab, linha, col)) {
+            tab[linha] = col;
+            resolver(tab, linha + 1, n);
+        }
+    }
+}
+
+int main() {
+    int n = 4;
+    int *tab = malloc(n * sizeof(int));
+    resolver(tab, 0, n);
+    free(tab);
+    return 0;
+}
 
