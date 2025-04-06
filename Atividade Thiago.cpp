@@ -322,4 +322,35 @@ int main() {
     permutacoes(str, 0, strlen(str) - 1);
     return 0;
 }
+//21
+#include <stdio.h>
 
+void combinacoes_rec(int arr[], int dados[], int inicio, int fim, int index, int k) {
+    if (index == k) {
+        printf("{");
+        for (int i = 0; i < k; i++) {
+            printf("%d", dados[i]);
+            if (i < k-1) printf(",");
+        }
+        printf("} ");
+        return;
+    }
+
+    for (int i = inicio; i <= fim && fim - i + 1 >= k - index; i++) {
+        dados[index] = arr[i];
+        combinacoes_rec(arr, dados, i+1, fim, index+1, k);
+    }
+}
+
+void gerar_combinacoes(int arr[], int n, int k) {
+    int dados[k];
+    combinacoes_rec(arr, dados, 0, n-1, 0, k);
+}
+
+int main() {
+    int arr[] = {1, 2, 3};
+    int k = 2;
+    int n = sizeof(arr)/sizeof(arr[0]);
+    gerar_combinacoes(arr, n, k);
+    return 0;
+}
