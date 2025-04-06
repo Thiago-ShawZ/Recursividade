@@ -164,3 +164,16 @@ int main() {
     printf("%d\n", contar_char("abracadabra", 'a'));
     return 0;
 }
+//12
+#include <stdio.h>
+
+int soma_array(int arr[], int tamanho) {
+    if (tamanho <= 0) return 0;
+    return arr[tamanho-1] + soma_array(arr, tamanho-1);
+}
+
+int main() {
+    int array[] = {1, 2, 3, 4};
+    printf("%d\n", soma_array(array, 4));
+    return 0;
+}
