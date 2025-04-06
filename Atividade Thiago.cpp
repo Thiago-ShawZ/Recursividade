@@ -482,4 +482,30 @@ int main() {
 
     return 0;
 }
+//25
+#include <stdio.h>
 
+int buscaBinaria(int arr[], int esquerda, int direita, int alvo) {
+    if (esquerda > direita)
+        return -1;
+
+    int meio = esquerda + (direita - esquerda) / 2;
+
+    if (arr[meio] == alvo)
+        return meio;
+    else if (arr[meio] > alvo)
+        return buscaBinaria(arr, esquerda, meio - 1, alvo);
+    else
+        return buscaBinaria(arr, meio + 1, direita, alvo);
+}
+
+int main() {
+    int arr[] = {1, 3, 5, 7, 9};
+    int tamanho = sizeof(arr) / sizeof(arr[0]);
+    int alvo = 5;
+
+    int resultado = buscaBinaria(arr, 0, tamanho - 1, alvo);
+    printf("%d\n", resultado);
+
+    return 0;
+}
