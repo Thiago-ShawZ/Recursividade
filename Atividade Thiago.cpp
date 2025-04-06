@@ -263,3 +263,18 @@ int main() {
     printf("%d\n", buscarElemento(arr, tamanho, alvo));
     return 0;
 }
+//18
+#include <stdio.h>
+
+int comprimentoString(const char *str) {
+    if (*str == '\0')
+        return 0;
+    return 1 + comprimentoString(str + 1);
+}
+
+int main() {
+    const char *texto = "recursivo";
+    printf("%d\n", comprimentoString(texto));
+    return 0;
+}
+
