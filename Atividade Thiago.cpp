@@ -528,3 +528,20 @@ int main() {
     printf("%d\n", exponenciacaoRapida(x, n));
     return 0;
 }
+//27
+#include <stdio.h>
+
+int contarCaminhos(int x1, int y1, int x2, int y2) {
+    if (x1 > x2 || y1 > y2)
+        return 0;
+    if (x1 == x2 && y1 == y2)
+        return 1;
+    return contarCaminhos(x1 + 1, y1, x2, y2) + contarCaminhos(x1, y1 + 1, x2, y2);
+}
+
+int main() {
+    int caminhos = contarCaminhos(0, 0, 2, 2);
+    printf("%d\n", caminhos);
+    return 0;
+}
+
