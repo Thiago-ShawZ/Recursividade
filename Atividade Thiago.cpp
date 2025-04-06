@@ -93,8 +93,39 @@ void inverter(char *str, int inicio, int fim) {
 }
 
 int main() {
-    char str[] = "recurs�o";
+    char str[] = "recursão";
     inverter(str, 0, strlen(str) - 1);
     printf("%s\n", str);
+    return 0;
+}
+//8
+#include <stdio.h>
+#include <string.h>
+
+int ehPalindromo(char str[], int inicio, int fim) {
+    if (inicio >= fim) {
+        return 1;
+    }
+    if (str[inicio] != str[fim]) {
+        return 0;
+    }
+    return ehPalindromo(str, inicio + 1, fim - 1);
+}
+
+int verificaPalindromo(char str[]) {
+    int tamanho = strlen(str);
+    if (tamanho == 0) {
+        return 1;
+    }
+    return ehPalindromo(str, 0, tamanho - 1);
+}
+
+int main() {
+    char str1[] = "arara";
+    char str2[] = "casa";
+    
+    printf("%s → %d\n", str1, verificaPalindromo(str1));
+    printf("%s → %d\n", str2, verificaPalindromo(str2));
+    
     return 0;
 }
